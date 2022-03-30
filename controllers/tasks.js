@@ -1,6 +1,15 @@
 import TaskContent from '../models/taskContent.js';
 import mongoose from 'mongoose';
 
+export const fetchTasks = async (req, res) => {
+    try {
+        const allTasks = await TaskContent.find();
+        res.status(200).json(allTasks);
+    } catch(e) {
+        res.status(404).json({message: e.message});
+    }
+}
+
 export const addTask = async (req, res) => {
     console.log("Hello from controllers!");
     const task = req.body;
@@ -8,7 +17,7 @@ export const addTask = async (req, res) => {
     const newTask = new TaskContent(task);
 
     try {
-        // await newTask.save();
+        await newTask.save();
         res.status(201).json(newTask);
     } catch (err) {
         res.status(409).json({message: err.message});
