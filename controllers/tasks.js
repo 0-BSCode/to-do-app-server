@@ -13,7 +13,6 @@ export const fetchTasks = async (req, res) => {
 export const addTask = async (req, res) => {
     console.log("Hello from controllers!");
     const task = req.body;
-    console.log(req.body);
     const newTask = new TaskContent(task);
 
     try {
