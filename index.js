@@ -8,6 +8,8 @@ import taskRoutes from './routes/tasks.js';
 const app = express();
 dotenv.config();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use('/tasks', taskRoutes);
 

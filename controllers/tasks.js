@@ -2,11 +2,13 @@ import TaskContent from '../models/taskContent.js';
 import mongoose from 'mongoose';
 
 export const addTask = async (req, res) => {
+    console.log("Hello from controllers!");
     const task = req.body;
+    console.log(req.body);
     const newTask = new TaskContent(task);
 
     try {
-        await newTask.save();
+        // await newTask.save();
         res.status(201).json(newTask);
     } catch (err) {
         res.status(409).json({message: err.message});
