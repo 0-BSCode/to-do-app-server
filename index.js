@@ -3,11 +3,13 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import taskRoutes from './routes/tasks.js';
 
 const app = express();
 dotenv.config();
 
 app.use(cors());
+app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
     res.send("Welcome to the API!");
